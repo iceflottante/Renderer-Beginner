@@ -1,0 +1,7 @@
+.vs/
+out/
+*.tga
+CMakeSettings.json
+
+# file ends here
+
