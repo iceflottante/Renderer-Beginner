@@ -2,7 +2,7 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-add_library (TGAImage "tgaimage.cpp" "tgaimage.h")
+add_library (TGAImage "tgaimage.cpp")
 
 # file ends here
 
