@@ -1,4 +1,4 @@
-#include "second-attempt.h"
+ï»¿#include "main.h"
 
 
 const TGAColor blue = TGAColor(0, 0, 255, 255);
@@ -8,11 +8,11 @@ const TGAColor green = TGAColor(0, 255, 0, 255);
 void line(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor color)
 { 
     /**
-     * Èç¹ûÄãÏ£ÍûÒÔ x »ò y ÖáÖÐµÄÄ³Ò»¸ö×÷ÎªÖ÷Òª·½ÏòÀ´°´ÕûÊý²½½ø£¬
-     * ÁíÒ»¸öÖá·½Ïò°´Ð±ÂÊ±¶Êý²½½ø£¬À´»æÖÆÏß£¬
-     * ÄÇÃ´ºÜÈÝÒ×»áÔÚÁíÒ»¸ö·½ÏòÉÏÌø¹ýÏñËØ£¬Ê¹µÃÏß²»Á¬Ðø
-     * £¨¶øÇÒÕâÑù±ØÐë´Ó×óÍùÓÒ»­¡­¡­´ÓÓÒÍù×óÖ±½ÓÌø¹ý»æÖÆÁË¡­¡­
-     *   ËùÒÔÏÔÈ»ÏÂÒ»´Î³¢ÊÔÐèÒªÍ¬Ê±¿¼ÂÇÁ½¸öÖá£©
+     * å¦‚æžœä½ å¸Œæœ›ä»¥ x æˆ– y è½´ä¸­çš„æŸä¸€ä¸ªä½œä¸ºä¸»è¦æ–¹å‘æ¥æŒ‰æ•´æ•°æ­¥è¿›ï¼Œ
+     * å¦ä¸€ä¸ªè½´æ–¹å‘æŒ‰æ–œçŽ‡å€æ•°æ­¥è¿›ï¼Œæ¥ç»˜åˆ¶çº¿ï¼Œ
+     * é‚£ä¹ˆå¾ˆå®¹æ˜“ä¼šåœ¨å¦ä¸€ä¸ªæ–¹å‘ä¸Šè·³è¿‡åƒç´ ï¼Œä½¿å¾—çº¿ä¸è¿žç»­
+     * ï¼ˆè€Œä¸”è¿™æ ·å¿…é¡»ä»Žå·¦å¾€å³ç”»â€¦â€¦ä»Žå³å¾€å·¦ç›´æŽ¥è·³è¿‡ç»˜åˆ¶äº†â€¦â€¦
+     *   æ‰€ä»¥æ˜¾ç„¶ä¸‹ä¸€æ¬¡å°è¯•éœ€è¦åŒæ—¶è€ƒè™‘ä¸¤ä¸ªè½´ï¼‰
      */
     for (int x = x0; x <= x1; x++) {
 

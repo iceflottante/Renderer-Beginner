@@ -1,4 +1,4 @@
-#include "first-attempt.h"
+ï»¿#include "main.h"
 
 
 const TGAColor blue = TGAColor(0, 0, 255, 255);
@@ -7,8 +7,8 @@ const TGAColor blue = TGAColor(0, 0, 255, 255);
 void line(int x0, int y0, int x1, int y1, TGAImage& image, TGAColor color)
 {
     /**
-     * Èç¹û step ±È½Ï´ó£¬±ÈÈç¶ÔÓÚ 100 x 100 µÄÍ¼Æ¬ÉèÎª 0.1£¬
-     * ÄÇÃ´¾Í»áºÜÈİÒ×³öÏÖ¶ÏÏß£¬ÉõÖÁÍêÈ«ÊÇ¼ä¸ôµã×é³ÉÏß
+     * å¦‚æœ step æ¯”è¾ƒå¤§ï¼Œæ¯”å¦‚å¯¹äº 100 x 100 çš„å›¾ç‰‡è®¾ä¸º 0.1ï¼Œ
+     * é‚£ä¹ˆå°±ä¼šå¾ˆå®¹æ˜“å‡ºç°æ–­çº¿ï¼Œç”šè‡³å®Œå…¨æ˜¯é—´éš”ç‚¹ç»„æˆçº¿
      */
     float step = 0.01;
 
