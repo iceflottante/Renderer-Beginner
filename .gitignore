@@ -1,7 +1,14 @@
+# Editor
 .vs/
-out/
-*.tga
+.vscode/
 CMakeSettings.json
+
+
+# Output
+out/
+build/
+*.tga
+
 
 # file ends here
 

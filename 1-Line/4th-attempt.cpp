@@ -1,8 +1,5 @@
-﻿#include "main.h"
-
-
-const TGAColor blue = TGAColor(0, 0, 255, 255);
-const TGAColor green = TGAColor(0, 255, 0, 255);
+﻿#include <cmath>
+#include "main.h"
 
 
 void line(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor color)
@@ -23,6 +20,7 @@ void line(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor color)
     {
         std::swap(x0, y0);
         std::swap(x1, y1);
+        std::swap(dx, dy);
         needTranspose = true;
     }
 
@@ -62,9 +60,34 @@ int main(int argc, char** argv)
 {
     TGAImage image(100, 100, TGAImage::RGB);
 
-    line(10, 20, 60, 50, image, blue);
+    line(50, 50, 10, 10, image, blue);
+    line(50, 50, 10, 20, image, green);
+    line(50, 50, 10, 30, image, blue);
+    line(50, 50, 10, 40, image, green);
+    line(50, 50, 10, 50, image, blue);
+    line(50, 50, 10, 60, image, green);
+    line(50, 50, 10, 70, image, blue);
+    line(50, 50, 10, 80, image, green);
+    line(50, 50, 10, 90, image, blue);
 
-    line(90, 20, 50, 90, image, green);
+    line(50, 50, 20, 90, image, blue);
+    line(50, 50, 30, 90, image, blue);
+    line(50, 50, 40, 90, image, blue);
+    line(50, 50, 50, 90, image, blue);
+    line(50, 50, 60, 90, image, blue);
+    line(50, 50, 70, 90, image, blue);
+    line(50, 50, 80, 90, image, blue);
+    line(50, 50, 90, 90, image, blue);
+    line(50, 50, 90, 90, image, blue);
+
+    line(50, 50, 90, 80, image, green);
+    line(50, 50, 90, 70, image, blue);
+    line(50, 50, 90, 60, image, green);
+    line(50, 50, 90, 50, image, blue);
+    line(50, 50, 90, 40, image, green);
+    line(50, 50, 90, 30, image, blue);
+    line(50, 50, 90, 20, image, green);
+    line(50, 50, 90, 10, image, blue);
 
     image.write_tga_file("output.tga");
 
