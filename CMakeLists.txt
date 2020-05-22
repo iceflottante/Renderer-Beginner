@@ -8,6 +8,7 @@ add_subdirectory ("Lib")
 
 add_subdirectory ("0-Getting-Started")
 add_subdirectory ("1-Line")
+add_subdirectory ("2-Triangle")
 
 # file ends here
 
