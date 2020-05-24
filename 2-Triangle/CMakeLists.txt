@@ -12,5 +12,10 @@ add_executable (SweepLine "sweep-line.cpp" "line.cpp")
 target_link_libraries (SweepLine PUBLIC TGAImage)
 
 
+add_executable (BarycentricCoordinate "barycentric-coordinate-method.cpp" "line.cpp")
+
+target_link_libraries (BarycentricCoordinate PUBLIC TGAImage)
+
+
 # file ends here
 
