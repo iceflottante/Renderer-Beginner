@@ -17,5 +17,11 @@ add_executable (BarycentricCoordinate "barycentric-coordinate-method.cpp" "line.
 target_link_libraries (BarycentricCoordinate PUBLIC TGAImage)
 
 
+add_executable (RandomColorTriangles "random-color-triangles.cpp" "line.cpp")
+
+target_link_libraries (RandomColorTriangles PUBLIC TGAImage)
+target_link_libraries (RandomColorTriangles PUBLIC LineLibModel)
+
+
 # file ends here
 
