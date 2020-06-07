@@ -6,7 +6,7 @@
 #define __MODEL_H__
 
 #include <vector>
-#include "geometry.h"
+#include "geometry.cpp"
 
 class Model {
 private:

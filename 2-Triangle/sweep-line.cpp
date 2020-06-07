@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../1-Line/Lib/model.h"
+#include "../Lib/model.h"
 #include "line.h"
 
 

@@ -1,4 +1,5 @@
 #include "../Lib/tgaimage.h"
+#include "../Lib/model.h"
 
 
 
@@ -45,6 +46,11 @@ void line(int x0, int y0, int x1, int y1, TGAImage &image, TGAColor &color)
             error -= dx * 2;
         }
     } 
+}
+
+void line(Vec2i a, Vec2i b, TGAImage& image, TGAColor& color)
+{
+    line(a.x, a.y, b.x, b.y, image, color);
 }
 
 // file ends here

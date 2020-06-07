@@ -3,9 +3,6 @@
 cmake_minimum_required (VERSION 3.8)
 
 
-add_subdirectory ("Lib")
-
-
 add_executable (FirstAttempt "1st-attempt.cpp")
 
 target_link_libraries (FirstAttempt PUBLIC TGAImage)
@@ -35,7 +32,7 @@ add_executable (WireframeRendering "wireframe-rendering.cpp")
 
 target_link_libraries (WireframeRendering PUBLIC TGAImage)
 
-target_link_libraries (WireframeRendering PUBLIC LineLibModel)
+target_link_libraries (WireframeRendering PUBLIC Model)
 
 # file ends here
 

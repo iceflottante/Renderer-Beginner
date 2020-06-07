@@ -1,3 +1,5 @@
+#include "../Lib/tgaimage.h"
+
 
 int main(int argc, char** argv)
 {

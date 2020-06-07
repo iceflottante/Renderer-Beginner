@@ -20,14 +20,14 @@ target_link_libraries (BarycentricCoordinate PUBLIC TGAImage)
 add_executable (RandomColorTriangles "random-color-triangles.cpp" "line.cpp")
 
 target_link_libraries (RandomColorTriangles PUBLIC TGAImage)
-target_link_libraries (RandomColorTriangles PUBLIC LineLibModel)
+target_link_libraries (RandomColorTriangles PUBLIC Model)
 
 
 
 add_executable (IlluminateTriangle "illuminate-triangle.cpp" "line.cpp")
 
 target_link_libraries (IlluminateTriangle PUBLIC TGAImage)
-target_link_libraries (IlluminateTriangle PUBLIC LineLibModel)
+target_link_libraries (IlluminateTriangle PUBLIC Model)
 
 
 
