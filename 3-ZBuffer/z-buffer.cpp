@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <algorithm>
 #include "../Lib/model.h"
 #include "../Lib/tgaimage.h"
@@ -34,28 +34,6 @@ Vec3f sub(Vec3f v0, Vec3f v1)
     return result;
 }
 
-
-/**
- * 扫描线（sweep line）算法需要按顺序遍历顶点坐标，然后判定是否绘制，这是经典的单线程编程思维模式
- * 如果在现代的并行计算领域，同时会有成千上万的线程同时计算时，我们就需要转变思维方式
- * 直接判定一个像素坐标是否在图元的范围内，让多个像素同时运算，这时，我们便只需要直接考虑包围框判定的方式
- *
- * 这里我们使用重心坐标系（Barycentric Coordinate System）
- * 这里我们用到的重心坐标系可以看作是单位向量不等的三维直角坐标系上的一个表示平面的方程式组：
- * \vec{P} = x \vec{A} + y \vec{B} + z \vec{C}
- * x + y + z = 1
- * 这样，等式所表示的系数集合形成一个平面，而其中三个系数都大于 0 的为三角形内，其余都是三角形外
- * 不过，如何求出 x, y, z 呢
- * \vec{P} = x \vec{A} + (y - y) \vec{A} + (z - z) \vec{A} + y \vec{B} + z \vec{C}
- * \vec{P} = (x + y + z) \vec{A} + y (\vec{B} - \vec{A}) + z (\vec{C} - \vec{A})
- * \vec{P} = 1 \vec{A} + y \vec{AB} + z \vec{AC}
- * 0 = \vec{PA} + y \vec{AB} + z \vec{AC}
- * 有：
- * (1, y, z) * (PA.x, AB.x, AC.x) = 0
- * (1, y, z) * (PA.y, AB.y, AC.y) = 0
- * 即 (1, y, z) 与同时垂直于 (PA.x, AB.x, AC.x) (PA.y, AB.y, AC.y) 的向量平行
- * 后者可以通过叉乘得到
- */
 Vec3i barycentricTemp(Vec2i p, Vec2i v0, Vec2i v1, Vec2i v2)
 {
     Vec3i result = cross(Vec3i(v0.x - p.x, v1.x - v0.x, v2.x - v0.x), Vec3i(v0.y - p.y, v1.y - v0.y, v2.y - v0.y));
@@ -73,43 +51,37 @@ Vec3f barycentric(Vec2i p, Vec2i v0, Vec2i v1, Vec2i v2)
 }
 
 
-bool isPointInsideTriangle(Vec2i p, Vec2i v0, Vec2i v1, Vec2i v2)
+void triangle(Vec3f v0, Vec3f v1, Vec3f v2, TGAImage &image, TGAColor &color, float *zbuffer, int width)
 {
-    Vec3f result = barycentric(p, v0, v1, v2);
-
-    if (result.x < 0 || result.y < 0 || result.z < 0)
-    {
-        return false;
-    }
-
-    return true;
-}
-
-
-void triangle(Vec2i v0, Vec2i v1, Vec2i v2, TGAImage &image, TGAColor &color)
-{
-    // 过滤三点共线的情况 (也可以按线来画)
+    // �������㹲�ߵ���� (Ҳ���԰�������)
     if (v0.y == v1.y && v1.y == v2.y) return;
 
-    Vec2i AB = v1 - v0;
-    Vec2i AC = v2 - v0;
-
-    Vec2i boudingMax(
-        std::max(v0.x, std::max(v1.x, std::max(v2.x, 0))),
-        std::max(v0.y, std::max(v1.y, std::max(v2.y, 0)))
+    Vec2f boudingMax(
+        std::fmax(v0.x, std::fmax(v1.x, std::fmax(v2.x, 0))),
+        std::fmax(v0.y, std::fmax(v1.y, std::fmax(v2.y, 0)))
     );
 
-    Vec2i boudingMin(
-        std::min(v0.x, std::min(v1.x, std::min(v2.x, image.get_width()))),
-        std::min(v0.y, std::min(v1.y, std::min(v2.y, image.get_height())))
+    Vec2f boudingMin(
+        std::fmin(v0.x, std::fmin(v1.x, std::fmin(v2.x, image.get_width()))),
+        std::fmin(v0.y, std::fmin(v1.y, std::fmin(v2.y, image.get_height())))
     );
 
     for (int x = boudingMin.x; x < boudingMax.x; x++)
     {
         for (int y = boudingMin.y; y < boudingMax.y; y++)
         {
-            if (isPointInsideTriangle(Vec2i(x, y), v0, v1, v2))
+            Vec3f result = barycentric(Vec2i(x, y), Vec2i(v0.x, v0.y), Vec2i(v1.x, v1.y), Vec2i(v2.x, v2.y));
+
+            if (result.x < 0 || result.y < 0 || result.z < 0)
             {
+                continue;
+            }
+
+            float z = result.x * v0.z + result.y * v1.z + result.z * v2.z;
+
+            if (zbuffer[y * width + x] <= z)
+            {
+                zbuffer[y * width + x] = z;
                 image.set(x, y, color);
             }
         }
@@ -117,25 +89,39 @@ void triangle(Vec2i v0, Vec2i v1, Vec2i v2, TGAImage &image, TGAColor &color)
 }
 
 
-Vec2i world2screen(Vec3f p, int w, int h)
+Vec3f world2screen(Vec3f p, int w, int h)
 {
-    return Vec2i((p.x + 1.f) * w / 2, (p.y + 1.f) * h / 2);
+    return Vec3f((p.x + 1.f) * w / 2, (p.y + 1.f) * h / 2, p.z);
 }
 
 
 int main(int argc, char** argv)
 {
+    std::cout << argc << "\n" << argv[1] << std::endl;
+
     Model* model = NULL;
 
-    if (argc == 2) {
+    if (argc == 2)
+    {
         model = new Model(argv[1]);
-    } else {
+    }
+    else
+    {
         return 1;
     }
 
     int width = 800;
     int height = 800;
     Vec3f lightDirection(0.f, 0.f, 1.f);
+
+
+    // initialize z buffer
+    float* zbuffer = new float[width * height];
+    for (int i = 0; i < width * height; i++)
+    {
+        zbuffer[i] = std::numeric_limits<int>::min();
+    }
+
 
     TGAImage image(width, height, TGAImage::RGB);
 
@@ -157,7 +143,9 @@ int main(int argc, char** argv)
 				world2screen(model-> vert(face[1]), width, height),
 				world2screen(model-> vert(face[2]), width, height),
 				image,
-				TGAColor(255 * intensity, 255 * intensity, 255 * intensity, 255)
+				TGAColor(255 * intensity, 255 * intensity, 255 * intensity, 255),
+                zbuffer,
+                width
 			);
         }
     }
