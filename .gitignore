@@ -1,5 +1,6 @@
 # Editor
-.vs/
+.vs/*
+!.vs/launch.vs.json
 .vscode/
 CMakeSettings.json
 

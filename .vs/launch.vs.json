@@ -1,0 +1,24 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "ZBuffer.exe (3-ZBuffer\\ZBuffer.exe)",
+      "name": "ZBuffer.exe (3-ZBuffer\\ZBuffer.exe)",
+      "args": [
+        "${workspaceRoot}\\Assets\\Models\\african_head.obj"
+      ]
+    },
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "TextureExample.exe (3-ZBuffer\\TextureExample.exe)",
+      "name": "TextureExample.exe (3-ZBuffer\\TextureExample.exe)",
+      "args": [
+        "${workspaceRoot}\\Assets\\Models\\african_head.obj"
+      ]
+    }
+  ]
+}
