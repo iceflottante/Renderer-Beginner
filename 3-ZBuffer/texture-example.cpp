@@ -51,10 +51,12 @@ Vec3f barycentric(Vec2i p, Vec2i v0, Vec2i v1, Vec2i v2)
 }
 
 
-void triangle(Vec3f v0, Vec3f v1, Vec3f v2, TGAImage &image, TGAColor &color, float *zbuffer, int width)
+void triangle(Vec3f v0, Vec3f v1, Vec3f v2, Vec2f vt0, Vec2f vt1, Vec2f vt2, TGAImage &image, Model *model, float *zbuffer)
 {
     // 过滤三点共线的情况 (也可以按线来画)
     if (v0.y == v1.y && v1.y == v2.y) return;
+    int width = image.get_width();
+    int height = image.get_height();
 
     Vec2f boudingMax(
         std::fmax(v0.x, std::fmax(v1.x, std::fmax(v2.x, 0))),
@@ -62,8 +64,8 @@ void triangle(Vec3f v0, Vec3f v1, Vec3f v2, TGAImage &image, TGAColor &color, fl
     );
 
     Vec2f boudingMin(
-        std::fmin(v0.x, std::fmin(v1.x, std::fmin(v2.x, image.get_width()))),
-        std::fmin(v0.y, std::fmin(v1.y, std::fmin(v2.y, image.get_height())))
+        std::fmin(v0.x, std::fmin(v1.x, std::fmin(v2.x, width))),
+        std::fmin(v0.y, std::fmin(v1.y, std::fmin(v2.y, height)))
     );
 
     for (int x = boudingMin.x; x < boudingMax.x; x++)
@@ -78,11 +80,12 @@ void triangle(Vec3f v0, Vec3f v1, Vec3f v2, TGAImage &image, TGAColor &color, fl
             }
 
             float z = result.x * v0.z + result.y * v1.z + result.z * v2.z;
+            Vec2f uv(result.x * vt0.x + result.y * vt1.x + result.z * vt2.x, result.x * vt0.y + result.y * vt1.y + result.z * vt2.y);
 
             if (zbuffer[y * width + x] <= z)
             {
                 zbuffer[y * width + x] = z;
-                image.set(x, y, color);
+                image.set(x, y, model -> diffuse(uv));
             }
         }
     }
@@ -142,10 +145,12 @@ int main(int argc, char** argv)
 				world2screen(model-> vert(face[0]), width, height),
 				world2screen(model-> vert(face[1]), width, height),
 				world2screen(model-> vert(face[2]), width, height),
+                model->uv(i, 0),
+                model->uv(i, 1),
+                model->uv(i, 2),
 				image,
-				TGAColor(255 * intensity, 255 * intensity, 255 * intensity, 255),
-                zbuffer,
-                width
+                model,
+                zbuffer
 			);
         }
     }
