@@ -30,9 +30,5 @@ add_executable (TextureExample "texture-example.cpp")
 target_link_libraries (TextureExample PUBLIC TGAImage)
 target_link_libraries (TextureExample PUBLIC Model)
 
-
-
-
-
 # file ends here
 
