@@ -53,7 +53,7 @@ Vec3f barycentric(Vec2i p, Vec2i v0, Vec2i v1, Vec2i v2)
 
 void triangle(Vec3f v0, Vec3f v1, Vec3f v2, TGAImage &image, TGAColor &color, float *zbuffer, int width)
 {
-    // ¹ýÂËÈýµã¹²ÏßµÄÇé¿ö (Ò²¿ÉÒÔ°´ÏßÀ´»­)
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã¹²ï¿½ßµï¿½ï¿½ï¿½ï¿½ (Ò²ï¿½ï¿½ï¿½Ô°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
     if (v0.y == v1.y && v1.y == v2.y) return;
 
     Vec2f boudingMax(

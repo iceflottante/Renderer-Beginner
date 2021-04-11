@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include "../Lib/model.h"
 #include "line.h"
 

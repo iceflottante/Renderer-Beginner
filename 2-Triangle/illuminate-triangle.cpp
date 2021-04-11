@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <algorithm>
 #include "../Lib/model.h"
 #include "../Lib/tgaimage.h"

@@ -5,10 +5,10 @@
 
 void triangle(Vec2i v0, Vec2i v1, Vec2i v2, TGAImage &image, TGAColor &color)
 {
-    // ¹ýÂËÈýµã¹²ÏßµÄÇé¿ö (Ò²¿ÉÒÔ°´ÏßÀ´»­)
+    // è¿‡æ»¤ä¸‰ç‚¹å…±çº¿çš„æƒ…å†µ (ä¹Ÿå¯ä»¥æŒ‰çº¿æ¥ç”»)
     if (v0.y == v1.y && v1.y == v2.y) return;
 
-    // Ã°ÅÝÅÅÐò
+    // å†’æ³¡æŽ’åº
     if (v0.y > v1.y) std::swap(v0, v1);
     if (v1.y > v2.y) std::swap(v1, v2);
     if (v0.y > v1.y) std::swap(v0, v1);

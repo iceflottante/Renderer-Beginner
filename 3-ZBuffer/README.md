@@ -1,4 +1,4 @@
-﻿# 隐藏面消除 Z Buffer
+# 隐藏面消除 Z Buffer
 
 ## Painter's algorithm
 

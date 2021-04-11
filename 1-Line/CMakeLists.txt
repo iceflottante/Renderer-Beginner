@@ -1,4 +1,4 @@
-﻿# CMakeLists.txt: 0-Line
+# CMakeLists.txt: 0-Line
 #
 cmake_minimum_required (VERSION 3.8)
 
