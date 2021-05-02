@@ -2,7 +2,7 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-project (Tiny-Renderer-Examples)
+project (Renderer-Beginner)
 
 add_subdirectory ("Lib")
 

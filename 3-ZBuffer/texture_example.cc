@@ -53,7 +53,6 @@ Vec3f barycentric(Vec2i p, Vec2i v0, Vec2i v1, Vec2i v2)
 
 void triangle(Vec3f v0, Vec3f v1, Vec3f v2, Vec2f vt0, Vec2f vt1, Vec2f vt2, TGAImage &image, Model *model, float *zbuffer)
 {
-    // �������㹲�ߵ���� (Ҳ���԰�������)
     if (v0.y == v1.y && v1.y == v2.y) return;
     int width = image.get_width();
     int height = image.get_height();
@@ -141,17 +140,17 @@ int main(int argc, char** argv)
 
         if (intensity > 0)
         {
-			triangle(
-				world2screen(model-> vert(face[0]), width, height),
-				world2screen(model-> vert(face[1]), width, height),
-				world2screen(model-> vert(face[2]), width, height),
+            triangle(
+                world2screen(model-> vert(face[0]), width, height),
+                world2screen(model-> vert(face[1]), width, height),
+                world2screen(model-> vert(face[2]), width, height),
                 model->uv(i, 0),
                 model->uv(i, 1),
                 model->uv(i, 2),
-				image,
+                image,
                 model,
                 zbuffer
-			);
+            );
         }
     }
 

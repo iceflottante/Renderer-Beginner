@@ -2,36 +2,26 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-add_executable (TriangleOutline "triangle-outline.cpp" "line.cpp")
-
+add_executable (TriangleOutline "triangle_outline.cc" "line.cc")
 target_link_libraries (TriangleOutline PUBLIC TGAImage)
 
 
-add_executable (SweepLine "sweep-line.cpp" "line.cpp")
-
-target_link_libraries (SweepLine PUBLIC TGAImage)
-
-
-add_executable (BarycentricCoordinate "barycentric-coordinate-method.cpp" "line.cpp")
-
-target_link_libraries (BarycentricCoordinate PUBLIC TGAImage)
+add_executable (TriangleSweepLine "triangle_sweep_line.cc" "line.cc")
+target_link_libraries (TriangleSweepLine PUBLIC TGAImage)
 
 
-add_executable (RandomColorTriangles "random-color-triangles.cpp" "line.cpp")
-
-target_link_libraries (RandomColorTriangles PUBLIC TGAImage)
-target_link_libraries (RandomColorTriangles PUBLIC Model)
+add_executable (TriangleBarycentric "triangle_barycentric.cc" "line.cc")
+target_link_libraries (TriangleBarycentric PUBLIC TGAImage)
 
 
-
-add_executable (IlluminateTriangle "illuminate-triangle.cpp" "line.cpp")
-
-target_link_libraries (IlluminateTriangle PUBLIC TGAImage)
-target_link_libraries (IlluminateTriangle PUBLIC Model)
+add_executable (ExampleTriangleRandomColors "example_triangle_random_colors.cc" "line.cc")
+target_link_libraries (ExampleTriangleRandomColors PUBLIC TGAImage)
+target_link_libraries (ExampleTriangleRandomColors PUBLIC Model)
 
 
-
-
+add_executable (ExampleTriangleIlluminate "example_triangle_illuminate.cc" "line.cc")
+target_link_libraries (ExampleTriangleIlluminate PUBLIC TGAImage)
+target_link_libraries (ExampleTriangleIlluminate PUBLIC Model)
 
 # file ends here
 

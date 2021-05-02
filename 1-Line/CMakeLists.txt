@@ -3,36 +3,29 @@
 cmake_minimum_required (VERSION 3.8)
 
 
-add_executable (FirstAttempt "1st-attempt.cpp")
-
-target_link_libraries (FirstAttempt PUBLIC TGAImage)
-
-
-add_executable (SecondAttempt "2nd-attempt.cpp")
-
-target_link_libraries (SecondAttempt PUBLIC TGAImage)
+add_executable (Line1 "line_1.cc")
+target_link_libraries (Line1 PUBLIC TGAImage)
 
 
-add_executable (ThirdAttempt "3rd-attempt.cpp")
-
-target_link_libraries (ThirdAttempt PUBLIC TGAImage)
-
-
-add_executable (FourthAttempt "4th-attempt.cpp")
-
-target_link_libraries (FourthAttempt PUBLIC TGAImage)
+add_executable (Line2 "line_2.cc")
+target_link_libraries (Line2 PUBLIC TGAImage)
 
 
-add_executable (FifthAttempt "5th-attempt.cpp")
+add_executable (Line3 "line_3.cc")
+target_link_libraries (Line3 PUBLIC TGAImage)
 
-target_link_libraries (FifthAttempt PUBLIC TGAImage)
+
+add_executable (Line4 "line_4.cc")
+target_link_libraries (Line4 PUBLIC TGAImage)
 
 
-add_executable (WireframeRendering "wireframe-rendering.cpp")
+add_executable (Line5 "line_5.cc")
+target_link_libraries (Line5 PUBLIC TGAImage)
 
-target_link_libraries (WireframeRendering PUBLIC TGAImage)
 
-target_link_libraries (WireframeRendering PUBLIC Model)
+add_executable (LineWireframe "line_wireframe.cc")
+target_link_libraries (LineWireframe PUBLIC TGAImage)
+target_link_libraries (LineWireframe PUBLIC Model)
 
 # file ends here
 

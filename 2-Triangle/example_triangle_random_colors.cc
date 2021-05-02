@@ -124,12 +124,14 @@ int main(int argc, char** argv)
     {
         std::vector<int> face = model -> face(i);
 
+        TGAColor color(rand() % 255, rand() % 255, rand() % 255, 255);
+
         triangle(
             world2screen(model-> vert(face[0]), width, height),
             world2screen(model-> vert(face[1]), width, height),
             world2screen(model-> vert(face[2]), width, height),
             image,
-            TGAColor(rand() % 255, rand() % 255, rand() % 255, 255)
+            color
         );
     }
 
