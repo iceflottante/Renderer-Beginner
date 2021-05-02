@@ -1,6 +1,5 @@
 # Editor
 .idea
-!.idea/workspace.xml
 .vs/*
 !.vs/launch.vs.json
 .vscode/
