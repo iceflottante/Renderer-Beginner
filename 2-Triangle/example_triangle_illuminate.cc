@@ -149,6 +149,7 @@ int main(int argc, char** argv)
         );
 
         float intensity = normalize(&n) * lightDirection;
+        TGAColor color(255 * intensity, 255 * intensity, 255 * intensity, 255);
 
         if (intensity > 0)
         {
@@ -157,7 +158,7 @@ int main(int argc, char** argv)
                 world2screen(model-> vert(face[1]), width, height),
                 world2screen(model-> vert(face[2]), width, height),
                 image,
-                TGAColor(255 * intensity, 255 * intensity, 255 * intensity, 255)
+                color
             );
         }
     }
