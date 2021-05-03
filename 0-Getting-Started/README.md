@@ -9,6 +9,8 @@
 
 ## 纹理坐标
 
+UV Coordinate
+
 左下角 (0, 0)，右上角 (1, 1)
 
 举例：OpenGL, Metal, ...

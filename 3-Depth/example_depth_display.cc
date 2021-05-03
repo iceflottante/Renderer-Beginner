@@ -51,7 +51,7 @@ Vec3f barycentric(Vec2i p, Vec2i v0, Vec2i v1, Vec2i v2)
 }
 
 
-void triangle(Vec3f v0, Vec3f v1, Vec3f v2, Vec2f vt0, Vec2f vt1, Vec2f vt2, TGAImage &image, Model *model, float *zbuffer)
+void triangle(Vec3f v0, Vec3f v1, Vec3f v2, Vec2f vt0, Vec2f vt1, Vec2f vt2, TGAImage &image, float *zbuffer, TGAColor &color)
 {
     if (v0.y == v1.y && v1.y == v2.y) return;
     int width = image.get_width();
@@ -84,7 +84,7 @@ void triangle(Vec3f v0, Vec3f v1, Vec3f v2, Vec2f vt0, Vec2f vt1, Vec2f vt2, TGA
             if (zbuffer[y * width + x] <= z)
             {
                 zbuffer[y * width + x] = z;
-                image.set(x, y, model -> diffuse(uv));
+                image.set(x, y, color);
             }
         }
     }
@@ -137,6 +137,7 @@ int main(int argc, char** argv)
         );
 
         float intensity = normalize(&n) * lightDirection;
+        TGAColor color(intensity * 255, intensity * 255, intensity * 255, 255);
 
         if (intensity > 0)
         {
@@ -148,8 +149,8 @@ int main(int argc, char** argv)
                     model->uv(i, 1),
                     model->uv(i, 2),
                     image,
-                    model,
-                    zbuffer
+                    zbuffer,
+                    color
             );
         }
     }
