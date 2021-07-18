@@ -10,7 +10,7 @@ CMakeSettings.json
 out/
 build/
 cmake-build-debug/
-*.tga
+output.tga
 
 
 # file ends here
