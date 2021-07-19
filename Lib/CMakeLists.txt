@@ -8,5 +8,7 @@ add_library (Geometry "geometry.cc")
 
 add_library (Model "model.cc")
 
+add_library (Line "line.cc")
+
 # file ends here
 

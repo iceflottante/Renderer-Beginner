@@ -1,4 +1,4 @@
-#include "../Lib/tgaimage.h"
+#include "tgaimage.h"
 
 
 TGAColor red = TGAColor(255, 0, 0, 255);

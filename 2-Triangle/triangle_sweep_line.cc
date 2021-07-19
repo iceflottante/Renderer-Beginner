@@ -1,6 +1,6 @@
 #include <iostream>
 #include "../Lib/model.h"
-#include "line.h"
+#include "../Lib/line.h"
 
 
 void triangle(Vec2i v0, Vec2i v1, Vec2i v2, TGAImage &image, TGAColor &color)

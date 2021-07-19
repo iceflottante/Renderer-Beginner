@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ExampleDepthDiffuse" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="Assets/Models/african_head.obj" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$ContentRoot$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Renderer-Beginner" TARGET_NAME="ExampleDepthDiffuse" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Renderer-Beginner" RUN_TARGET_NAME="ExampleDepthDiffuse">
+    <method v="2">
+      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+    </method>
+  </configuration>
+</component>

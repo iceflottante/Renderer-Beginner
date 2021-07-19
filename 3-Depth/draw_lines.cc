@@ -1,6 +1,6 @@
 #include "../Lib/tgaimage.h"
 #include "../Lib/model.h"
-#include "../2-Triangle/line.h"
+#include "../Lib/line.h"
 
 
 int width = 800;

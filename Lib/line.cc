@@ -1,5 +1,5 @@
-#include "../Lib/tgaimage.h"
-#include "../Lib/model.h"
+#include "tgaimage.h"
+#include "model.h"
 
 
 

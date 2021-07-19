@@ -2,10 +2,6 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-
-add_library (Line "../2-Triangle/line.cc")
-
-
 add_executable (DrawLines "draw_lines.cc")
 target_link_libraries (DrawLines PUBLIC TGAImage)
 target_link_libraries (DrawLines PUBLIC Line)

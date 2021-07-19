@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include "../Lib/model.h"
-#include "line.h"
+#include "../Lib/line.h"
 
 
 Vec3i cross(Vec3i v0, Vec3i v1)
